@@ -140,13 +140,13 @@ struct conditional_typedef_t {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Code to treat __restrict__ as a CV qualifier.
-
+/*
 template<typename arg_t>
 struct is_restrict {
   enum { value = false };
 };
 template<typename arg_t>
-struct is_restrict<arg_t __restrict__> {
+struct is_restrict<arg_t restrict> {
   enum { value = true };
 };
 
@@ -157,7 +157,7 @@ struct add_restrict {
 };
 template<typename arg_t>
 struct add_restrict<arg_t*> {
-  typedef arg_t* __restrict__ type;
+  typedef arg_t* __restrict type;
 };
 
 template<typename arg_t>
@@ -165,7 +165,7 @@ struct remove_restrict {
   typedef arg_t type;
 };
 template<typename arg_t>
-struct remove_restrict<arg_t __restrict__> {
+struct remove_restrict<arg_t __restrict> {
   typedef arg_t type;
 };
 
@@ -174,7 +174,7 @@ MGPU_HOST_DEVICE typename add_restrict<arg_t>::type make_restrict(arg_t x) {
   typename add_restrict<arg_t>::type y = x;
   return y;
 }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // Template unrolled looping construct.
 

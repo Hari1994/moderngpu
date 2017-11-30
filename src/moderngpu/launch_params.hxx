@@ -74,7 +74,9 @@ void launch_box_cta_k(func_t f, int num_ctas, args_t... args) {
   cta += gridDim.x * blockIdx.y;
 #endif
 
-  detail::restrict_forward(f, tid, cta, num_ctas, make_restrict(args)...);
+  //detail::restrict_forward(f, tid, cta, num_ctas, make_restrict(args)...);
+  detail::restrict_forward(f, tid, cta, num_ctas, args...);
+
 }
 
 // Dummy kernel for retrieving PTX version.
