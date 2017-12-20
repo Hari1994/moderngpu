@@ -74,7 +74,7 @@ template<int nt, int vt, typename key_t, typename val_t>
 struct cta_sort_t {
   enum { 
     has_values = !std::is_same<val_t, empty_t>::value,
-    num_passes = s_log2(nt)
+    num_passes = 8 //s_log2(nt)
   };
 
   union storage_t {
