@@ -86,7 +86,12 @@ enable_if_t<
   b -= a_count;
   array_t<type_t, vt> x;
   strided_iterate<nt, vt>([&](int i, int index) {
-    x[i] = (index < a_count) ? a[index] : b[index];
+	if (index < a_count) {
+		x[i] = a[index];
+	}
+	else {
+		x[i] = b[index];
+	}
   }, tid, a_count + b_count);
   return x;
 }
